@@ -1,0 +1,43 @@
+.wrapper {
+    padding: 20px;
+    background: lightcoral;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+}
+
+.primary{
+    background-color: blue;
+    color: white;
+}
+
+.secondary{
+    background-color: bisque;
+    color: black;
+}
+
+.succes {
+    background-color: #31694E;
+    color: black;
+}
+
+.danger {
+    background-color: red;
+    color: aliceblue;
+}
+
+.big{
+    height: 100px;
+    width: 100px;
+}
+
+.medium{
+    height: 40px;
+    width: 60px;
+}
+
+.small{
+    height: 25px;
+    width: 30px;
+}

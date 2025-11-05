@@ -1,0 +1,57 @@
+.btn{
+    padding: auto;
+    background: purple;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.wrapper {
+    padding: 20px;
+    background: lightcoral;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+}
+
+
+.primary{
+    background-color: blue;
+    color: white;
+}
+
+.secondary{
+    background-color: bisque;
+    color: black;
+}
+
+.succes {
+    background-color: #31694E;
+    color: black;
+}
+
+.danger {
+    background-color: red;
+    color: aliceblue;
+}
+
+
+.big{
+    background-color: blue;
+    height: 100px;
+    width: 100px;
+}
+
+.medium{
+    background-color: red;
+    height: 40px;
+    width: 60px;
+}
+
+.small{
+    background-color: brown;
+    height: 25px;
+    width: 30px;
+}
