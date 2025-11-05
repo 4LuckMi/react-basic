@@ -1,54 +1,42 @@
-import { useState } from "react";
+import Checkbox from "./CheckBox";
+import Delete from "./Detele";
+import type { Todo } from '../App';
 
-interface Todo{
-    id: number;
-    text: string;
-    completed: boolean;
+interface TodoListProps {
+    todos: Todo[];
+    deleteTodo: (id: number) => void;
+    updateTask: (id: number) => void;
 }
 
-export default function TodoList(){
-    
-    const [todos, setTodos] = useState<Todo[]>([
-        {id: 1, text: 'Learn React', completed: true},
-        {id: 2, text: 'build Project', completed: false}
-    ]);
-
-    const [newTodo, setNewTodo] = useState<string>('');
-
-    function addTodo() {
-        setTodos([...todos, {id: todos.length + 1, text: newTodo, completed: false}])
-        setNewTodo('');
-    }
-
-    function deleteTodo(id: number) {
-        setTodos(todos.filter(todo => todo.id !== id))
-    }
-
-    function updateTask(id: number) {
-        setTodos(todos.map((td) => td.id === id ? {...td, completed: !td.completed} : td
-    ))
-    }
-
-    function changeTask(text: string){
-        setTodos(todos.map((td) => td.id === td.id ? {...td, text: text} : td));
-    }
-
-
+export default function TodoList({ todos, deleteTodo, updateTask }: TodoListProps){
     return(
-        <>
-        <div>
-            <h3 className="text-xl font-bold mb-4">Todo List</h3>
-            {/* Form Todo */}
-            <input type="text" placeholder="Add new Todo"  value={newTodo} onChange={(e) => setNewTodo(e.target.value)}/>
-            <button onClick={addTodo}>Add todo</button>
-        </div>
-
-        {/* Menampilkan List */}
-        <ul className="space-y-2">
+    
+    <ul className="space-y-3">
             {todos.map(todo => (
-                <li key={todo.id}>{todo.text} - {String(todo.completed)} - <button onClick={() => deleteTodo(todo.id)}>Detele</button> - <input type="checkbox" onClick={() => updateTask(todo.id)}/></li>
+                <li 
+                    key={todo.id}
+                    className={`flex items-center justify-between p-3 border rounded shadow-sm ${todo.completed ? "complete": todo}`}
+                >
+                    <span className="flex-grow">
+                        {todo.text} - {todo.completed}
+                    </span>
+                    
+                    <div className="flex space-x-3 items-center">
+                        <Checkbox 
+                            todoId={todo.id}
+                            completed={todo.completed}
+                            updateTask={updateTask}
+                        />
+                        <Delete
+                            todoId={todo.id} 
+                            deleteTodo={deleteTodo} 
+                        />
+                    </div>
+                </li>
             ))}
+            {!todos.length && (
+                <p className="text-gray-500 text-center italic">No todos yet. Add one!</p>
+            )}
         </ul>
-        </>
-    )
+    );
 }
